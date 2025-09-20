@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS EVENTS Presents: Dandiya Night</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+  :root {
+    --primary-color: #fca311;
+    --accent-color: #e91e63;
+    --dark-bg: #0d0d0d;
+    --card-bg: rgba(26, 26, 26, 0.8);
+    --gradient-start: #ff8a00;
+    --gradient-mid: #e52e71;
+    --gradient-end: #9c27b0;
+    --gradient-1: #ff0080;
+    --gradient-2: #7928ca;
+    --gradient-3: #0070f3;
+}
+
+/* Performance optimizations */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #f1f1f1;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 15% 50%, rgba(255, 0, 128, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(121, 40, 202, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(0, 112, 243, 0.15) 0%, transparent 25%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.bebas-neue {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1.5px;
+}
+
+/* Optimized glass card with reduced blur */
+.glass-card {
+    background: rgba(26, 26, 26, 0.7);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    isolation: isolate;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2), var(--gradient-3), var(--gradient-2), var(--gradient-1));
+    background-size: 400% 400%;
+    border-radius: 18px;
+    z-index: -1;
+    animation: gradientBorder 3s ease infinite;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.glass-card:hover::before {
+    opacity: 1;
+    animation: gradientBorder 1.5s ease infinite;
+}
+
+@keyframes gradientBorder {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.countdown-box {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.countdown-box:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--gradient-start), var(--gradient-mid));
+    color: white;
+    font-weight: bold;
+    padding: 12px 28px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+    background: linear-gradient(45deg, var(--gradient-mid), var(--gradient-start));
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.floating {
+    animation: float 6s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.text-gradient {
+    background: linear-gradient(45deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientText 3s ease infinite;
+}
+
+@keyframes gradientText {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.decorative-element {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(252, 163, 17, 0.1) 0%, transparent 70%);
+    filter: blur(20px);
+    z-index: -1;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.feature-icon {
+    font-size: 2rem;
+    background: linear-gradient(45deg, var(--gradient-start), var(--gradient-mid));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.ticket-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.ticket-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+}
+
+.social-icon {
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px) scale(1.1);
+}
+
+/* Gradient pulse animation */
+@keyframes gradientPulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 138, 0, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 138, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 138, 0, 0); }
+}
+
+.gradient-pulse {
+    animation: gradientPulse 1.5s infinite;
+    border: 2px solid transparent;
+    border-image: linear-gradient(45deg, var(--gradient-start), var(--gradient-mid)) 1;
+}
+
+/* Perfect Small Popup styles */
+.popup {
+    position: fixed;
+    bottom: 630px;
+    left: 50%;
+    transform: translate(-50%, 150%);
+    background: rgba(25, 25, 25, 0.98);
+    backdrop-filter: blur(8px);
+    padding: 14px 22px;
+    z-index: 1000;
+    text-align: center;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.4s ease-out;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    width: auto;
+    opacity: 0;
+}
+
+.popup.active {
+    transform: translate(-50%, 0);
+    opacity: 1;
+}
+
+.popup p {
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.15px;
+    white-space: nowrap;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+/* Footer styles */
+.footer {
+    background: rgba(10, 10, 10, 0.9);
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transform: translateZ(0);
+}
+
+.footer-text {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.5px;
+}
+
+.footer-highlight {
+    background: linear-gradient(45deg, var(--gradient-start), var(--gradient-mid));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+}
+
+/* Performance optimizations for mobile */
+@media (max-width: 768px) {
+    .glass-card::before {
+        animation: gradientBorder 5s ease infinite;
+    }
+    
+    body::before {
+        background: 
+            radial-gradient(circle at 15% 50%, rgba(255, 0, 128, 0.1) 0%, transparent 25%),
+            radial-gradient(circle at 85% 30%, rgba(121, 40, 202, 0.1) 0%, transparent 25%),
+            radial-gradient(circle at 50% 80%, rgba(0, 112, 243, 0.1) 0%, transparent 25%);
+    }
+}
+
+/* Prevent flash of unstyled content */
+body {
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+body.loading {
+    opacity: 0;
+}
+    </style>
+</head>
+<body class="p-4 sm:p-8 relative flex flex-col min-h-screen">
+    <!-- Decorative elements -->
+    <div class="decorative-element top-0 left-0 opacity-50"></div>
+    <div class="decorative-element bottom-0 right-0 opacity-30"></div>
+    
+<!-- Perfect Small Popup and overlay -->
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="popup">
+    <p>Call us to book or use social handles</p>
+</div>
+    
+    <div class="max-w-4xl mx-auto text-center relative z-10 flex-grow">
+        <!-- Header Section -->
+        <header class="mb-16 mt-8 floating">
+            <h1 class="text-5xl sm:text-7xl font-extrabold bebas-neue text-white mb-4">
+                <span class="text-3xl sm:text-5xl block bebas-neue mb-2 text-gradient">AS EVENTS Presents</span>
+                Dandiya Night
+            </h1>
+            <p class="text-xl sm:text-3xl bebas-neue tracking-wide text-gray-300">
+                Partner: <span class="text-gradient">TALCHER SYNDICATE</span>
+            </p>
+            <div class="mt-6 inline-block bg-gradient-to-r from-yellow-500 to-pink-500 p-0.5 rounded-full">
+                <div class="bg-gray-900 rounded-full px-6 py-2">
+                    <p class="text-lg font-bold text-white">
+                        1st Time in Talcher!
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Info Section -->
+        <div class="grid md:grid-cols-3 gap-6 mb-16">
+            <div class="glass-card p-6 rounded-xl text-center card-hover-effect">
+                <div class="feature-icon mb-3">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <p class="text-lg font-semibold text-gray-400">🗓 Date</p>
+                <p class="text-3xl bebas-neue mt-2 text-white">27th September, Saturday</p>
+            </div>
+            <div class="glass-card p-6 rounded-xl text-center card-hover-effect">
+                <div class="feature-icon mb-3">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <p class="text-lg font-semibold text-gray-400">⏰ Time</p>
+                <p class="text-3xl bebas-neue mt-2 text-white">6 PM</p>
+            </div>
+            <div class="glass-card p-6 rounded-xl text-center card-hover-effect">
+                <div class="feature-icon mb-3">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <p class="text-lg font-semibold text-gray-400">📍 Location</p>
+                <p class="text-xl bebas-neue mt-2 text-white">Kalyani Mandap, CWS Colony, Talcher</p>
+            </div>
+        </div>
+
+
+        <!-- Countdown Timer -->
+<div class="glass-card p-8 rounded-xl mb-16 border border-yellow-500/20 relative overflow-hidden card-hover-effect">
+    <div class="absolute -inset-2 bg-gradient-to-r from-yellow-500/10 to-pink-500/10 blur-lg opacity-50"></div>
+    <h2 class="text-2xl sm:text-3xl bebas-neue mb-6 tracking-wide text-white relative z-10">Event Starts In</h2>
+    <div id="countdown" class="grid grid-cols-4 gap-3 sm:gap-4 text-center relative z-10">
+        <div class="countdown-box p-3 sm:p-4">
+            <span id="days" class="block text-3xl sm:text-4xl lg:text-5xl bebas-neue text-yellow-400">00</span>
+            <span class="block text-xs sm:text-sm text-gray-300 mt-1 uppercase tracking-wider">Days</span>
+        </div>
+        <div class="countdown-box p-3 sm:p-4">
+            <span id="hours" class="block text-3xl sm:text-4xl lg:text-5xl bebas-neue text-pink-400">00</span>
+            <span class="block text-xs sm:text-sm text-gray-300 mt-1 uppercase tracking-wider">Hours</span>
+        </div>
+        <div class="countdown-box p-3 sm:p-4">
+            <span id="minutes" class="block text-3xl sm:text-4xl lg:text-5xl bebas-neue text-purple-400">00</span>
+            <span class="block text-xs sm:text-sm text-gray-300 mt-1 uppercase tracking-wider">Minutes</span>
+        </div>
+        <div class="countdown-box p-3 sm:p-4 relative">
+            <span id="seconds" class="block text-3xl sm:text-4xl lg:text-5xl bebas-neue text-blue-400">00</span>
+            <span class="block text-xs sm:text-sm text-gray-300 mt-1 uppercase tracking-wider absolute left-1/2 transform -translate-x-1/2 w-full px-1">Seconds</span>
+        </div>
+    </div>
+</div>
+
+        <!-- Ticket Prices -->
+        <div class="mb-16">
+            <h2 class="text-3xl sm:text-4xl bebas-neue tracking-wider text-gradient mb-8"> Ticket Prices</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="glass-card ticket-card p-6 rounded-xl text-center pulse card-hover-effect">
+                    <p class="text-2xl bebas-neue text-white">Stag</p>
+                    <p class="text-5xl font-bold bebas-neue mt-2 text-yellow-400">₹499</p>
+                    <div class="mt-4">
+                        <button class="btn-primary text-sm buy-now-btn">BUY NOW</button>
+                    </div>
+                </div>
+                <div class="glass-card ticket-card p-6 rounded-xl text-center pulse card-hover-effect" style="animation-delay: 0.2s;">
+                    <p class="text-2xl bebas-neue text-white">Couple</p>
+                    <p class="text-5xl font-bold bebas-neue mt-2 text-yellow-400">₹849</p>
+                    <div class="mt-4">
+                        <button class="btn-primary text-sm buy-now-btn">BUY NOW</button>
+                    </div>
+                </div>
+                <div class="glass-card ticket-card p-6 rounded-xl text-center pulse card-hover-effect" style="animation-delay: 0.4s;">
+                    <p class="text-2xl bebas-neue text-white">Kids</p>
+                    <p class="text-5xl font-bold bebas-neue mt-2 text-yellow-400">₹249</p>
+                    <div class="mt-4">
+                        <button class="btn-primary text-sm buy-now-btn">BUY NOW</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exciting Prizes and Inclusions -->
+        <div class="mb-16">
+            <h2 class="text-3xl sm:text-4xl bebas-neue tracking-wider text-gradient mb-8"> What's Included</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                <div class="glass-card p-5 rounded-xl flex items-center space-x-4 card-hover-effect">
+                    <div class="feature-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <p class="text-lg bebas-neue tracking-wide text-white">Live DJ with Band</p>
+                </div>
+                <div class="glass-card p-5 rounded-xl flex items-center space-x-4 card-hover-effect">
+                    <div class="feature-icon">
+                        <i class="fas fa-cocktail"></i>
+                    </div>
+                    <p class="text-lg bebas-neue tracking-wide text-white">Free Drinks</p>
+                </div>
+                <div class="glass-card p-5 rounded-xl flex items-center space-x-4 card-hover-effect">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <p class="text-lg bebas-neue tracking-wide text-white">Free Snacks & Food (Veg/Non-Veg)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact & Social Media Section -->
+        <!-- Contact & Social Media Section -->
+<div class="mb-12" id="booking-section">
+    <h2 class="text-3xl sm:text-4xl bebas-neue tracking-wider text-gradient mb-8">📞 Book Your Tickets Now!</h2>
+    <div class="grid sm:grid-cols-2 gap-8">
+        <!-- Contact Numbers -->
+        <div class="glass-card p-6 rounded-xl card-hover-effect" id="contact-card">
+            <h3 class="text-2xl bebas-neue text-white mb-5 flex items-center justify-center">
+                <i class="fas fa-phone-alt mr-3 feature-icon"></i> Contact Numbers
+            </h3>
+            <ul class="space-y-3">
+                <li class="p-3 bg-gray-800/50 rounded-lg transition-all duration-200 hover:bg-gray-800/70 cursor-pointer" onclick="callNumber('9937461943')">
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-300"><i class="fas fa-phone-volume mr-2 text-yellow-500"></i> Call now:</span>
+                        <span class="text-lg text-white font-semibold">9937461943</span>
+                    </div>
+                </li>
+                <li class="p-3 bg-gray-800/50 rounded-lg transition-all duration-200 hover:bg-gray-800/70 cursor-pointer" onclick="callNumber('9556505644')">
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-300"><i class="fas fa-phone-volume mr-2 text-yellow-500"></i> Call now:</span>
+                        <span class="text-lg text-white font-semibold">9556505644</span>
+                    </div>
+                </li>
+                <li class="p-3 bg-gray-800/50 rounded-lg transition-all duration-200 hover:bg-gray-800/70 cursor-pointer" onclick="callNumber('9348909918')">
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-300"><i class="fas fa-phone-volume mr-2 text-yellow-500"></i> Call now:</span>
+                        <span class="text-lg text-white font-semibold">9348909918</span>
+                    </div>
+                </li>
+                <li class="p-3 bg-gray-800/50 rounded-lg transition-all duration-200 hover:bg-gray-800/70 cursor-pointer" onclick="callNumber('7847964552')">
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-300"><i class="fas fa-phone-volume mr-2 text-yellow-500"></i> Call now:</span>
+                        <span class="text-lg text-white font-semibold">7847964552</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- Social Handles (unchanged) -->
+        <div class="glass-card p-6 rounded-xl card-hover-effect" id="social-card">
+            <h3 class="text-2xl bebas-neue text-white mb-5 flex items-center justify-center">
+                <i class="fas fa-hashtag mr-3 feature-icon"></i> Social Handles
+            </h3>
+            <div class="space-y-6">
+                <div class="bg-gray-800/50 p-4 rounded-lg">
+                    <p class="text-lg bebas-neue text-yellow-400 mb-2">AS Events</p>
+                    <a href="https://www.instagram.com/as_events00?igsh=dWFtcmo3Yjh6YzF1" target="_blank" class="text-white hover:text-pink-400 transition-colors duration-200 flex items-center justify-center social-icon">
+                        <i class="fab fa-instagram text-2xl mr-2"></i>
+                        @as_events00
+                    </a>
+                </div>
+                <div class="bg-gray-800/50 p-4 rounded-lg">
+                    <p class="text-lg bebas-neue text-yellow-400 mb-2">Talcher Syndicate</p>
+                    <a href="https://www.instagram.com/talcher_syndicate?igsh=MTJxMTJxNTF1d2VpMw==" target="_blank" class="text-white hover:text-pink-400 transition-colors duration-200 flex items-center justify-center social-icon">
+                        <i class="fab fa-instagram text-2xl mr-2"></i>
+                        @talcher_syndicate
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Footer -->
+    <footer class="relative mt-20 pt-12 pb-6 px-4 overflow-hidden">
+  <!-- Decorative gradient elements -->
+  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purp
