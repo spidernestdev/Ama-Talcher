@@ -532,4 +532,122 @@ body.loading {
     <!-- Footer -->
     <footer class="relative mt-20 pt-12 pb-6 px-4 overflow-hidden">
   <!-- Decorative gradient elements -->
-  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purp
+  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-50"></div>
+  <div class="absolute -top-20 left-1/4 w-40 h-40 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
+  <div class="absolute -top-10 right-1/4 w-32 h-32 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full filter blur-3xl opacity-20 animate-pulse" style="animation-delay: 1.5s;"></div>
+  
+  <!-- Main footer content -->
+  <div class="max-w-4xl mx-auto text-center relative z-10">
+    <!-- Instagram CTA -->
+    <div class="mb-8">
+      <p class="text-gray-400 text-sm uppercase tracking-wider mb-3">Developer</p>
+      <a 
+        href="https://www.instagram.com/kamina_with_out_hashina?igsh=MzE0OHY5Y2NhY2s3" 
+        target="_blank" 
+        class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
+      >
+        <i class="fab fa-instagram text-2xl mr-0"></i>
+        <span>@kamina_with_out_hashina</span>
+      </a>
+    </div>
+    
+    <!-- Copyright text -->
+    <div class="border-t border-gray-800 pt-6">
+      <p class="text-gray-500 text-sm">
+        Made with <i class="fas fa-heart text-pink-500 mx-1"></i> by 
+        <a 
+          href="https://www.instagram.com/kamina_with_out_hashina?igsh=MzE0OHY5Y2NhY2s3" 
+          target="_blank" 
+          class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 font-medium hover:from-purple-300 hover:to-pink-300 transition-all duration-300"
+        >
+        @kamina_with_out_hashina
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Countdown Timer
+        const countdown = () => {
+            // Set the target date and time
+            const countToDate = new Date("Sep 27, 2025 18:00:00").getTime();
+            
+            const timer = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = countToDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Update the elements
+                document.getElementById("days").innerText = days > 0 ? days.toString().padStart(2, '0') : '00';
+                document.getElementById("hours").innerText = hours > 0 ? hours.toString().padStart(2, '0') : '00';
+                document.getElementById("minutes").innerText = minutes > 0 ? minutes.toString().padStart(2, '0') : '00';
+                document.getElementById("seconds").innerText = seconds > 0 ? seconds.toString().padStart(2, '0') : '00';
+
+                // If the countdown is over, show a message
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("countdown").innerHTML = "<p class='text-2xl bebas-neue text-gradient'>The event is live!</p>";
+                }
+            }, 1000);
+        };
+
+        // Buy Now Button Functionality
+        document.querySelectorAll('.buy-now-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Scroll to booking section
+                document.getElementById('booking-section').scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+                
+                // Add gradient pulse to contact and social cards
+                const contactCard = document.getElementById('contact-card');
+                const socialCard = document.getElementById('social-card');
+                
+                contactCard.classList.add('gradient-pulse');
+                socialCard.classList.add('gradient-pulse');
+                
+                // Show popup after a short delay
+                setTimeout(() => {
+                    document.getElementById('overlay').style.display = 'block';
+                    document.getElementById('popup').classList.add('active');
+                }, 800);
+                
+                // Remove effects after 5 seconds
+                setTimeout(() => {
+                    contactCard.classList.remove('gradient-pulse');
+                    socialCard.classList.remove('gradient-pulse');
+                    document.getElementById('overlay').style.display = 'none';
+                    document.getElementById('popup').classList.remove('active');
+                }, 5000);
+            });
+        });
+        
+        // Close popup when clicking on overlay
+        document.getElementById('overlay').addEventListener('click', function() {
+            this.style.display = 'none';
+            document.getElementById('popup').classList.remove('active');
+            
+            // Also remove gradient pulse from cards
+            document.getElementById('contact-card').classList.remove('gradient-pulse');
+            document.getElementById('social-card').classList.remove('gradient-pulse');
+        });
+        
+        // Function to initiate phone call
+function callNumber(phoneNumber) {
+    // Show confirmation before calling
+    if (confirm(`Call ${phoneNumber}?`)) {
+        // Redirect to tel: link to initiate phone call
+        window.location.href = `tel:${phoneNumber}`;
+    }
+}
+
+        window.onload = countdown;
+    </script>
+</body>
+</html>
